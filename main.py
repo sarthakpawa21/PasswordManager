@@ -4,8 +4,9 @@ from tkinter import messagebox
 import random
 import pyperclip
 
+#test comment
 
-
+sample_var = 1
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate():

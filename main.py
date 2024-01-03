@@ -5,7 +5,7 @@ import random
 import pyperclip
 
 #test comment
-
+DEFAULT_EMAIL = "dummyid@gmail.com"
 sample_var = 1
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -32,7 +32,7 @@ def generate():
     random.shuffle(password_list)
 
     password = ""
-    password="".join(password_list)
+    password="".join(password_list) # joins all elements of password list with "" as a separator . "#".join(List) joins the elements of the list and separates them with # sign to return a output sting
     password_entry.delete(0,END)
     password_entry.insert(0,password)
     return password
@@ -54,7 +54,7 @@ def save():
         messagebox.showwarning('ERROR' , message="Please don't leave any fields empty" )
 
     else :
-        is_okay = messagebox.askokcancel(title = website , message=f"These are the details entered : \n Username/Email : {username} , \nPassword : {password} \n Is this ok to save ?")
+        is_okay = messagebox.askokcancel(title = website , message=f"These are the details entered : \n\n Username/Email : {username} , \nPassword : {password} \n\n Is this ok to save ?")
 
         if is_okay :
             try :
@@ -68,7 +68,6 @@ def save():
 
                 data.update(data_dict)
                 with open('data.json' , 'w') as data_file :
-
                     json.dump(data,data_file , indent=4)
 
             finally :
@@ -115,10 +114,10 @@ password_label.grid(row=3,column=0)
 
 website_entry = Entry(width=55)
 website_entry.grid(row = 1 , column=1 , columnspan=2)
-
+website_entry.focus()
 username_entry = Entry(width=55)
 username_entry.grid(row=2,column=1,columnspan=2)
-
+username_entry.insert(0,DEFAULT_EMAIL)
 password_entry = Entry(width=35)
 password_entry.grid(row=3,column=1)
 
